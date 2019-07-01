@@ -64,3 +64,20 @@ h1 {
     padding-left: 3%;
     color: #ffffff;
 }
+
+.set-lineup {
+    width: 60%;
+    height: 90px;
+    margin-left: 20%;
+    background: #313131;
+}
+
+.set-lineup p {
+    width: 5px;
+    height: 90px;
+}
+
+.set-lineup .set-lineup-box {
+    width:50%;
+    height: 90px;
+}
