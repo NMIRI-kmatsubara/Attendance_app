@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>予定管理ページ</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'app/stylesheet.css' %}">
+</head>
+<body>
+    <div class="branding">
+        <p>フロイデ管弦楽団</p>
+    </div>
+    {% block content %}{% endblock %}
+
+    <div class="footer">
+        <p>©︎2019 Matsubara Kazune</p>
+    </div>
+
+</body>
+</html>
+
