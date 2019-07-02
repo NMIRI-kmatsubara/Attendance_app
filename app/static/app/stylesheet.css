@@ -67,17 +67,43 @@ h1 {
 
 .set-lineup {
     width: 60%;
-    height: 90px;
+    height: 150px;
     margin-left: 20%;
-    background: #313131;
+    background: red;
 }
 
-.set-lineup p {
-    width: 5px;
-    height: 90px;
+.set-lineup .set-lineup-month {
+    width: 20px;
+    height: 150px;
+    background: orange;
+    margin:0px;
+    float: left;
 }
 
 .set-lineup .set-lineup-box {
     width:50%;
-    height: 90px;
+    height: 150px;
+    background: blue;
+}
+
+.set-lineup .set-lineup-box .set-lineup-day{
+    width:50%;
+    height: 20px;
+    background: yellow;
+    margin:0;
+    text-align: center;
+}
+
+.set-lineup .set-lineup-box .set-lineup-place{
+    width:100%;
+    height: 40px;
+    background: yellow;
+    margin:10px 0;
+}
+
+.set-lineup .set-lineup-box .set-lineup-menu{
+    width:80%;
+    height: 70px;
+    background: yellow;
+    margin:10px 0;
 }
