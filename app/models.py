@@ -5,6 +5,13 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.contrib.auth.base_user import BaseUserManager
+import datetime
+
+class Part(models.Model):
+    part = models.CharField(max_length=100,blank=True)
+
+    def __str__(self):
+        return self.part
 
 class UserManager(BaseUserManager):
     use_in_migrations = True
@@ -38,9 +45,10 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), unique=True)
-    first_name = models.CharField(_('first name'), max_length=30, blank=True)
-    last_name = models.CharField(_('last name'), max_length=150, blank=True)
-
+    full_name = models.CharField(_('氏名'), max_length=150, null=True)
+    #first_name = models.CharField(_('first name'), max_length=30, blank=True)
+    #last_name = models.CharField(_('last name'), max_length=150, blank=True)
+    part = models.ForeignKey(Part, verbose_name=_('所属') ,on_delete=models.PROTECT, null=True)
     is_staff = models.BooleanField(
         _('staff status'),
         default=False,
@@ -68,18 +76,20 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = _('users')
     
     def get_full_name(self):
-        full_name = '%s %s' %(self.first_name, self.last_name)
-        return full_name.strip()
+        #full_name = '%s %s' %(self.first_name, self.last_name)
+        return self.full_name
 
     def get_short_name(self):
-        return self.first_name
+        return self.full_name
 
     def email_user(self, subject, message, from_email=None, **kwargs):
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
     @property
     def username(self):
-        return self.email
+        return self.full_name
+
+    
 
 # Create your models here.
 class Place(models.Model):
@@ -98,5 +108,18 @@ class Practice(models.Model):
     manu = models.TextField(blank=True)
     Place_Category = models.ForeignKey(Place, on_delete=models.PROTECT)
 
+    def __str__(self):
+        return self.date.strftime("%m/%d")
 
+class Check_attend(models.Model):
+    check_attend = models.CharField(max_length=10, blank=True)
+
+    def __str__(self):
+        return self.check_attend
+
+class Attend(models.Model):
+    practice = models.ForeignKey(Practice, on_delete=models.PROTECT)
+    member = models.ForeignKey(User, on_delete=models.PROTECT, null=True)
+    check_attend = models.ForeignKey(Check_attend, on_delete=models.PROTECT, null=True)
+    comment = models.TextField(blank=True)
 
