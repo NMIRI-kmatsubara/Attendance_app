@@ -123,3 +123,6 @@ class Attend(models.Model):
     check_attend = models.ForeignKey(Check_attend, on_delete=models.PROTECT, null=True)
     comment = models.TextField(blank=True)
 
+    class Meta:
+        unique_together =('practice', 'member')
+

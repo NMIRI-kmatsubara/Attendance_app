@@ -3,34 +3,17 @@
 {% block content %}
 
 
+{% for practice in practices %}
+    <div class="flex">
+        <p class="set-lineup-month">{{ practice.date|date:"n"}}月</p>
+        <div class="set-lineup-box">
+                <p class="set-lineup-day">練習日：{{ practice.date }}</p>
+                <p class="set-lineup-place">練習場所：{{ practice.Place_Category }}</p>
+                <p class="set-lineup-menu">{{ practice.manu }}</p>
 
-<div class="flex">
-    <p class="set-lineup-month">７月</p>
-    <div class="set-lineup-box">
-            <p class="set-lineup-day">練習日：7月3日</p>
-            <p class="set-lineup-place">練習場所：コミュニティセンター</p>
-            <p class="set-lineup-menu">合奏</p>
-
+        </div>
     </div>
-</div>
-
-<div class="flex">
-    <p class="set-lineup-month">７月</p>
-    <div class="set-lineup-box">
-            <p class="set-lineup-day">練習日：7月3日</p>
-            <p class="set-lineup-place">練習場所：コミュニティセンター</p>
-            <p class="set-lineup-menu">合奏</p>
-
-    </div>
-</div>
-
-
-
-
-
-
-
-
+{% endfor %}
 
 
 
