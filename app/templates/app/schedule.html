@@ -10,6 +10,8 @@
                 <p class="set-lineup-day">練習日：{{ practice.date }}</p>
                 <p class="set-lineup-place">練習場所：{{ practice.Place_Category }}</p>
                 <p class="set-lineup-menu">{{ practice.manu }}</p>
+                <a href="{% url 'app:schedule_detail' practice.id %}">詳細</a>
+                
 
         </div>
     </div>

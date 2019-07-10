@@ -1,0 +1,14 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for Attend_member in Attend_members %}
+
+    <p>項目</p>
+    <p>{{ Attend_member.member.full_name }}</p>
+ 
+
+{% endfor %}
+
+{% endblock %}
