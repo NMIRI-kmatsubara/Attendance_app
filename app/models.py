@@ -118,9 +118,9 @@ class Check_attend(models.Model):
         return self.check_attend
 
 class Attend(models.Model):
-    practice = models.ForeignKey(Practice, on_delete=models.PROTECT)
-    member = models.ForeignKey(User, on_delete=models.PROTECT, null=True)
-    check_attend = models.ForeignKey(Check_attend, on_delete=models.PROTECT, null=True)
+    practice = models.ForeignKey(Practice, on_delete=models.PROTECT, related_name="practice_field")
+    member = models.ForeignKey(User, on_delete=models.PROTECT, null=True, related_name="member_field")
+    check_attend = models.ForeignKey(Check_attend, on_delete=models.PROTECT, null=True, related_name="check_attend_field")
     comment = models.TextField(blank=True)
 
     class Meta:

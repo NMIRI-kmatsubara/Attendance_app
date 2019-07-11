@@ -3,12 +3,17 @@
 
 {% block content %}
 
+<div style="text-aligin: center;">
+
+<p>練習参加者</p>
+
 {% for Attend_member in Attend_members %}
 
-    <p>項目</p>
     <p>{{ Attend_member.member.full_name }}</p>
  
 
 {% endfor %}
+
+</div>
 
 {% endblock %}

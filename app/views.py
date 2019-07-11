@@ -15,9 +15,10 @@ def schedule(request):
     return render(request, 'app/schedule.html', {'practices': practices})
 
 def schedule_detail(request, practice_id):
+    #指定したIDの練習内容を取得
     prac = Practice.objects.get(pk=practice_id)
-    d = prac.date
-    Attend_members = Attend.objects.filter(date=d)
+
+    Attend_members = prac.practice_field.all().filter(check_attend='出席')
     return render(request, 'app/schedule_detail.html', {'Attend_members': Attend_members})
 
 
